@@ -2,6 +2,7 @@ package app.matheus.motta.jbank.controller;
 
 import app.matheus.motta.jbank.controller.dto.CreateWalletDto;
 import app.matheus.motta.jbank.controller.dto.DepositMoneyDto;
+import app.matheus.motta.jbank.controller.dto.StatementDto;
 import app.matheus.motta.jbank.service.WalletService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
@@ -45,5 +46,14 @@ public class WalletController {
                 request.getParameter("x-user-ip"));
 
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/{walletId}/statements")
+    public ResponseEntity<StatementDto> getStatements(@PathVariable("walletId") UUID walletId,
+                                                      @RequestParam(name = "page", defaultValue = "0") Integer page,
+                                                      @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) {
+
+        var statement = walletService.getStatements(walletId, page, pageSize);
+        return ResponseEntity.ok(statement);
     }
 }

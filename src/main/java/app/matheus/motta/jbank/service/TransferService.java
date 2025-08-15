@@ -58,5 +58,6 @@ public class TransferService {
         transfer.setSender(sender);
         transfer.setTransferValue(dto.value());
         transfer.setTransferDateTime(LocalDateTime.now());
+        transferRepository.saveAndFlush(transfer);
     }
 }
