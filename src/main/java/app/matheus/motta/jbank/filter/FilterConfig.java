@@ -14,8 +14,8 @@ public class FilterConfig {
     }
 
     @Bean
-    public FilterRegistrationBean<IpFilter> filterFilterRegistrationBean() {
-        var registrationBean = new FilterRegistrationBean<IpFilter>();
+    public FilterRegistrationBean<IpFilter> ipFilterFilterRegistrationBean() {
+        final var registrationBean = new FilterRegistrationBean<IpFilter>();
         registrationBean.setFilter(ipFilter);
         registrationBean.setOrder(0);
         return registrationBean;

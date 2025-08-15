@@ -30,4 +30,7 @@ public class Wallet {
 
     @Column(name = "balance")
     private BigDecimal balance;
+
+    @Version
+    private Long version;
 }
